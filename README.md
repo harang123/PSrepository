@@ -26,7 +26,7 @@ ProblemSolving about groomide
 		int num = int.parse(line);
 
 		int count = 0;
-		for(int i = 1; i <= num; i++)
+		for(int i = 1; i < num; i++)
 		{
 			int one = i % 10;
 			int ten = i ~/ 10;  /* 처음에 다른 언어들처럼 그냥 int ten = i / 10;을 했었다. 하지만 원하는 결과값이 안나와 계속 고민하다가 dart의 나눗셈이 다른 언어들과는 
@@ -45,5 +45,41 @@ ProblemSolving about groomide
 		}
 		print(count);
 	}
+369게임에서 위와같이 문제를 풀었을 때 3자리 수를 입력받게 되면 오류가 발생한다는 것을 알게 되어 다른 방법을 찾다가 RegExp(정규 표현식 클래스)를 알게되어 다른 분의 코드를 참고하여풀어보았다.
+
+	import 'dart:io';
+	import 'dart:math';
+
+	void main() {
+
+		var line = stdin.readLineSync();
+		int num = int.parse(line);
+
+		int count = 0;  /* count라는 변수를 사용하여 해당 Sring 문자열에서 369라는 문자가 몇번이나 표시되었는지 카운트하기 위하여 변수를 선언하였다.*/
+
+		for(int i = 1; i < num; i++)  // 숫자 1부터 입력받은 숫자까지 모두 확인하기 위해 for문을 사용하였다.
+		{
+			String myNum = i.toString();  /* RegExp(정규식표현)을 사용하여 문자열을 비교하여야 함으로 인트 i에 toString()함수를 사용하여 String으로 형변환하였다. */
+			for(int j = 0; j < myNum.length; j++) /* 새로운 for문을 만들어 위에서 String으로 변환한 글자 수만큼 반복하도록 하였다. */
+			{
+				count += check(myNum.substring(j, j+1));  /* 아래에서 check라는 메소드를 만들어 String에 369문자가 포함되어 있으면 1을 반환하고 없으면 0을 반환하도록 하                                                                              여 369가 포함되어 있으면 count 변수에 1을 더하게하였다.*/
+			}
+		}
+
+		print(count);
+	}
+
+	int check(String a)
+	{
+		if(a.contains(new RegExp('[369]')))
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+많이 찾아보았으나 아직 RegExp부분을 정확하게 이해하지 못하였다고 판단이 되며 나중에 좀더 공부할 시간을 가지려한다. 하지만 String 타입의 길이를 계산하여 RegExp로 문자열을 비교하는 푸는 방법을 알게되었으며 String변수에 .substring(j, j+1)로 구간을 나눠 비교하는 것도 인상적이었다. 
 	
 	
