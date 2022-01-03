@@ -82,4 +82,24 @@ ProblemSolving about groomide
 	}
 많이 찾아보았으나 아직 RegExp부분을 정확하게 이해하지 못하였다고 판단이 되며 나중에 좀더 공부할 시간을 가지려한다. 하지만 String 타입의 길이를 계산하여 RegExp로 문자열을 비교하는 푸는 방법을 알게되었으며 String변수에 .substring(j, j+1)로 구간을 나눠 비교하는 것도 인상적이었다. 
 	
-	
+# 구름 ide - 최소값
+
+	import 'dart:io';
+	void main() {
+		int count = int.parse(stdin.readLineSync());  // 배열의 크기를 입력받는다.
+
+		String data = stdin.readLineSync();  /* 문제에서 입력을 받을때 한줄에 공백으로 구분하여 n개의정수를 입력해야 함으로 for문을 쓰는것이 아닌 한개의 문자열 형식으로 입력받았                                                         다. ex) 1 3 5 6 <- 이런식의 공백을 포함한 문자열로 입력을 받는다. */
+		List<String> arr = data.split(' ');  // split(' ')메소드를 사용하여 위에서 입력받은 문자열을 공백을 기준으로 찢어놓은 뒤 arr 리스트를 만들어 값을 넣어준다. 
+		List<int> arrInt = arr.map(int.parse).toList();  /* 넣어준 값을 int형식으로 바꿔야 하기 때문에 위의 리스트를 .map(int.parse)로 바꾼뒤 .toList()로 리스트 형식으로 바꿔                                                                     arrInt에 값을 담아준다. */
+
+		int min = arrInt[0];  /* 0번 인덱스의 요소를 최소값으로 설정하여 다른 인덱스들과 비교하게 하였다.*/
+		for(int i = 1; i < count; i++)  // 배열의 크기만큼 반복하여 최소값을 찾아준다.
+		{
+			if(min > arrInt[i])
+			{
+				min = arrInt[i];
+			}
+		}
+		print(min);
+	}
+문자열 형식으로 입력받아 리스트를 만드는 것을 생각못해 많은 시간을 잡아먹었던 문제였다. arr.map(int.parse)에 대한 이해가 아직 부족함으로 좀 더 공부할 예정이다. 
