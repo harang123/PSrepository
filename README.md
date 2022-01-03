@@ -2,11 +2,11 @@
 ProblemSolving about groomide
 
 // 구름 ide - 약수 구하기
+
 import 'dart:io';
 void main() {
 	var line = stdin.readLineSync();  // 입력스트림으로 입력값을 받아 line에 넣어준다.
 	int num = int.parse(line);  // stdin.readLineSync()로 받은 값은 String상태로 line에 초기화됨으로 int.parse(line)을 이용하여 int 값으로 바꿔준다.
-	
 	for(int i = 1; i <= num; i++)
 	{
 		if(num % i == 0)
