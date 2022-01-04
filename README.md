@@ -103,3 +103,20 @@ ProblemSolving about groomide
 		print(min);
 	}
 문자열 형식으로 입력받아 리스트를 만드는 것을 생각못해 많은 시간을 잡아먹었던 문제였다. arr.map(int.parse)에 대한 이해가 아직 부족함으로 좀 더 공부할 예정이다. 
+
+# 구름 ide - 최소값 개선방법
+=> 피드백을 받고 배열내에서 최소값과 최대값을 찾는 방법이 있는지 찾아봤더니 배열변수.reduce(min) / 배열변수.reduce(max)를 사용하여 더욱 간단히 최대값 최소값을 찾는 방법을 알게되었다..reduce(min) / .reduce(max)는 다트 내장 라이브러리인 'dart:math'에 속해있기 때문에 import를 해주어야 한다. 
+
+	import 'dart:io';
+	import 'dart:math';
+
+	void main() {
+		int n = int.parse(stdin.readLineSync());
+
+		String str = stdin.readLineSync();
+		List<String> arr = str.split(' ');
+		List<int> arrInt = arr.map(int.parse).toList();
+
+		int minimum = arrInt.reduce(min);
+		print(minimum);
+	}
