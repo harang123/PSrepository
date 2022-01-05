@@ -219,4 +219,17 @@ int check = arr.reduce((total, element) => total + element); 파라미터안의 
 	}
 배운점 : switch문의 정확한 정의, map, forEach, split 메서드들을 복습하였으며 ceil(올림), floor(버림), round(반올림), toStringAsFixed()함수에대해 알게되었다.  
 
+# 구름 ide - Min 함수
+
+	import 'dart:io';
+	import 'dart:math';
+
+	void main() {
+		String line = stdin.readLineSync();  
+		List<String> arrLine = line.split(' ');  // String으로 입력받은 값을 split 메서드를 사용하여 찢어 arrLine이라는 리스트에 넣어준다.
+		List<int> arrInt = arrLine.map(int.parse).toList(); // 아래에서 reduce메서드로 값을 비교하려면 숫자로 인식되어야 함으로 map 메서드를 사용하여 String을 int로 바꿔준다.
+
+		print(arrInt.reduce(min));  // 'dart:math'클래스를 import해서 사용하는 reduce메소드이다. 
+	}
+
 
