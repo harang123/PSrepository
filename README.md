@@ -232,4 +232,25 @@ int check = arr.reduce((total, element) => total + element); 파라미터안의 
 		print(arrInt.reduce(min));  // 'dart:math'클래스를 import해서 사용하는 reduce메소드이다. 
 	}
 
+# 구름 ide - 네 수의 곱
+
+	import 'dart:io';
+
+	void main() {
+		String line = stdin.readLineSync(); // 공백으로 값을 입력받기 때문에 String으로 입력받는다.
+		List<String> arrLine = line.split(' ');  // 각각의 값들을 따로 사용해야 하기때문에 List에 값을 분리해 넣어준다.
+		List<int> arrInt = arrLine.map(int.parse).toList();  // String형식의 List를 int형식의 List로 변환하여 준다.
+
+		print(multi(arrInt[0], arrInt[1], arrInt[2], arrInt[3])); // multi 메서드를 만들어 사용하여 네 정수의 곱을 출력한다.
+	}
+
+	int multi(int a, int b, int c, int d)
+	{
+		return mul(mul(a, b), mul(c, d));  // mul 메서드를 생성하여 네 정수의 곱을 구하는 multi 메서드를 만든다.
+	}
+
+	int mul(int a, int b)
+	{
+		return a * b;
+	}
 
