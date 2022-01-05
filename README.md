@@ -99,6 +99,28 @@ ProblemSolving about groomide
 		}
 	}
 많이 찾아보았으나 아직 RegExp부분을 정확하게 이해하지 못하였다고 판단이 되며 나중에 좀더 공부할 시간을 가지려한다. 하지만 String 타입의 길이를 계산하여 RegExp로 문자열을 비교하는 푸는 방법을 알게되었으며 String변수에 .substring(j, j+1)로 구간을 나눠 비교하는 것도 인상적이었다. 
+
+3,6,9문제를 다른방식으로 풀어보았다. 처음에는 배운 grammer를 바탕으로 문제를 풀어보았는데 자꾸 막히고 이해가 안되서 많은 시간이 걸렸다. 
+결국에는 피드백으로 받은 코드를 참고삼아 문제플 풀게되었다.
+
+	import 'dart:io';
+	void main() {
+		int num = int.parse(stdin.readLineSync());	
+
+		int count = 0;	
+		List<String> check = ['3', '6', '9'];  // 반복문에서 받은 값들을 비교하기 위한 List를 생성하였다.
+
+		for(int i = 1; i < num; i++){
+
+			i.toString().split('').forEach((value){ /* int로 들어온 값인 i를 .toString() 메서드를 사용하여 String으로 변환한 후 .split('')메서드를 이용해 한글자씩으로 나누                                                                    었다. 그런 후 .forEach를 사용하여 2글자 이상일 경우 모든 값들을 비교할 수 있도록 하였다. */
+				if(check.contains(value)){ // 위에서 생성해놓았던 check 리스트를 사용하여 3, 6, 9중에 한 글자라도 포함하고 있는지를 비교한 후 count++로 값을 구하였다.
+					count++;
+				}
+			});
+		}
+		print(count);
+	}
+
 	
 # 구름 ide - 최소값
 
