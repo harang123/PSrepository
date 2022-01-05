@@ -254,3 +254,32 @@ int check = arr.reduce((total, element) => total + element); 파라미터안의 
 		return a * b;
 	}
 
+# 구름 ide - 특정 문자 개수 구하기
+
+	import 'dart:io';
+	void main() {
+		String line = stdin.readLineSync();  // 임의의 문장(50자 이내) 입력
+		List<String> arrLine = line.split(' ');
+
+		int count = 0;
+		String alphavet = stdin.readLineSync();  // 문장에서 개수를 구하고 싶은 문자 입력
+		arrLine.forEach((value){  // forEach구문을 이용하여 쨸 처음 입력받은 문장의 각 부분을 이용해 개수를 구하고 싶은 문자와 같은지를 비교해준다.
+			if(value == alphavet)
+			{
+				count++;  // 같은 글자가 몇개가 있는지 구하는 것이므로 같을 때마다 count변수의 값을 1씩 올려준다.
+			}
+			if(value.length > 1)
+			{
+				List<String> arrStr = value.split('');  // 쨀 처음 입력받은 문장을 공백을 이용해 분리하였음에도 완전히 분리가 안되었기때문에 한번 더 분리하였다.
+				arrStr.forEach((val){  // 분리한 단어들을 다시 같은 글자가 있는지 비교하는 방법이다.
+					if(val == alphavet)
+					{
+						count++;
+					}
+				});
+			}
+		});	
+		print(count);
+	}
+
+
