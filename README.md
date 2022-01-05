@@ -173,7 +173,8 @@ ProblemSolving about groomide
 		{
 			arr.add(i);
 		}
-		int check = arr.reduce((total, element) => total + element);  /* 처음에는 그냥 for문에서 count+= i;를 사용하여 풀었는데 forEach문, reduce, fold문을 연습하기 위해                                                                                      reduce를 사용하여 풀어보았다.*/
+		int check = arr.reduce((total, element) => total + element);  
+		/* 처음에는 그냥 for문에서 count+= i;를 사용하여 풀었는데 forEach문, reduce, fold문을 연습하기 위해 reduce를 사용하여 풀어보았다.*/
 		print(check);
 	}
 정확하게 reduce의 개념이 잡혀있지 않았는데 이번 문제를 풀면서 reduce의 개념을 정확하게 잡을 수 있었다. 
