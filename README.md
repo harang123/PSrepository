@@ -160,3 +160,22 @@ ProblemSolving about groomide
 		int minimum = arrInt.reduce(min);
 		print(minimum);
 	}
+
+# 구름 ide - 리그 경기 횟수 구하기
+
+	import 'dart:io';
+	void main() {
+		var line = stdin.readLineSync();
+		var num = int.parse(line);
+
+		List<int> arr = new List();
+		for(int i = 1; i < num; i++)
+		{
+			arr.add(i);
+		}
+		int check = arr.reduce((total, element) => total + element);  /* 처음에는 그냥 for문에서 count+= i;를 사용하여 풀었는데 forEach문, reduce, fold문을 연습하기 위해                                                                                      reduce를 사용하여 풀어보았다.*/
+		print(check);
+	}
+정확하게 reduce의 개념이 잡혀있지 않았는데 이번 문제를 풀면서 reduce의 개념을 정확하게 잡을 수 있었다. 
+int check = arr.reduce((total, element) => total + element); 파라미터안의 total은 arr리스트의 첫번째 값을 받아오고 첫번째 리턴값을 도출할때의 element에는 바로 2번째 값이 들어가게 된다.따라서 만약 arr = [1, 2, 3, 4, 5] 일 경우에는 처음 루핑을 돌때 total = 1, element = 2 값이 들어가 2번쨰 total의 값은 3이 된다. 
+
