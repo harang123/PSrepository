@@ -120,3 +120,25 @@ ProblemSolving about groomide
 		int minimum = arrInt.reduce(min);
 		print(minimum);
 	}
+
+# 구름 ide - 3의 배수 게임
+
+	import 'dart:io';
+	void main() {
+		String line = stdin.readLineSync();
+		int num = int.parse(line);
+
+		List<int> arrInt = new List(num);  // for문에서 값을 입력받기 쉽게 크기가 정해진 List를 먼저 선언해준다.
+
+		for(int i = 1; i <= num; i++)
+		{
+			arrInt[i-1] = i;  // 리스트에 들어갈 값과 인덱스의 크기가 -1 차이기 때문에 인덱스 위치에 -1을 하여 값을 맞춰준다.
+
+			if(i % 3 == 0)
+			{
+				arrInt[i-1] = 'X';  // 3의 배수일때 i-1 인덱스 자리에 'X' 값을 넣어준다.
+			}
+		}
+		print(arrInt.join(' ') + ' ');  // arrInt에 들어있는 값들을 join(' ') 함수를 이용해 공백을 기준으로 String 값으로 합쳐준 후 출력한다.
+	}
+
