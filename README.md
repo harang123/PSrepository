@@ -17,6 +17,24 @@ ProblemSolving about groomide
 			}
 		}
 	}	ㅇ
+약수 구하기에서 반복문으로 출력문을 계속 돌리지 않고 다른 방법으로 구해보았다. (join() 메서드를 사용)
+
+	import 'dart:io';
+	void main() {
+		var line = stdin.readLineSync();  // 입력스트림으로 입력값을 받아 line에 넣어준다.
+		int num = int.parse(line);  // stdin.readLineSync()로 받은 값은 String상태로 line에 초기화됨으로 int.parse(line)을 이용하여 int 값으로 바꿔준다.
+		
+		List<int> arr = new List();
+		for(int i = 1; i <= num; i++)
+		{
+			if(num % i == 0)
+			{
+				arr.add(i);  // 반복문으로 int List인 arr에 값을 추가해 주었다.
+			}
+		}
+		print(arr.join(' ') + ' ');  
+		// 원하는 출력의 값이 1 2 3 4 5 10 20 이렇게 공백으로 묶여있고 마지막에도 공백이 들어가야 했기에 List의 값을 공백으로 묶어준 후 마지막에 + ' '을 더해 완성하였다.
+	}
 
 # 구름 ide - 369게임
 
