@@ -304,5 +304,54 @@ int check = arr.reduce((total, element) => total + element); 파라미터안의 
 		print(arrInt.join(' ') + ' ');  // arrInt에 들어있는 값들을 join(' ') 함수를 이용해 공백을 기준으로 String 값으로 합쳐준 후 출력한다.
 	}
 
+# 구름 ide - 비트연산 기본 1
 
+	import 'dart:io';
+	void main() {
+		String line = stdin.readLineSync();
+		List<String> arrLine = line.split(' ');
+		List<int> arrInt = arrLine.map(int.parse).toList();
+		List<Operator> bg = [and, or, xor]; 
 
+		bg.forEach((value){
+			print(calculate(arrInt[0], arrInt[1], value));
+		});
+	}
+
+	typedef Operator(int a, int b);
+
+	int calculate(int a, int b, Operator oper){
+		return oper(a, b);
+	}
+
+	int and(int a, int b)
+	{
+		if(a == 1 && b == 1){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	}
+
+	int or(int a, int b)
+	{
+		if(a == 1 || b == 1){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	}
+
+	int xor(int a, int b)
+	{
+		if(a == b){
+			return 0;
+		}
+		else{
+			return 1;
+		}
+	}
+if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forEach도 써보고, typedef도 처음으로 써본 문제이다. 여러가지 방법으로 풀어보고 싶어 다양하게 풀어봤던것 같다. 
+만약 값을 입력받아 계산하는 문제였다면 typedef가 꽤나 유용했을 것 같다. 
