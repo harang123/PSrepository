@@ -180,3 +180,43 @@ ProblemSolving about groomide
 정확하게 reduce의 개념이 잡혀있지 않았는데 이번 문제를 풀면서 reduce의 개념을 정확하게 잡을 수 있었다. 
 int check = arr.reduce((total, element) => total + element); 파라미터안의 total은 arr리스트의 첫번째 값을 받아오고 첫번째 리턴값을 도출할때의 element에는 바로 2번째 값이 들어가게 된다.따라서 만약 arr = [1, 2, 3, 4, 5] 일 경우에는 처음 루핑을 돌때 total = 1, element = 2 값이 들어가 2번쨰 total의 값은 3이 된다. 
 
+# 구름 ide - 시험성적 평균과 등급 구하기
+
+	import 'dart:io';
+	void main() {
+		String line = stdin.readLineSync();
+		List<String> arrLine = line.split(' ');  // String으로 입력받은 3과목의 점수를 리스트로 찢어놓았다.
+
+		List<int> arrInt = arrLine.map(int.parse).toList(); /* 계산을 하기위해서는 List의 값들을 String에서 int로 바꿔야 하기 때문에 map 메서드를 사용하여 리스트의 값들을                                                                              String에서 int로 바꾼 새로운 배열을 생성하였다.*/
+
+		int count = 0;
+		arrInt.forEach((value){
+			count += value;
+		});
+		double aver = count / 3; // if문에서 비교식에 사용하기 위하여 평균값을 변수에 받아주었다.
+		String averStr = aver.toStringAsFixed(2);  // 나중에 출력문에서 사용하기 위해 소수점 아래 2자리에서 반올림한값을 String형식으로 변수를 받았다.
+
+		if(aver >= 90)  // switch문은 비교식 사용이 불가능하기때문에 if문으로 처리하였다. 
+		{
+			print(averStr + ' A'); // if문 밖에서 따로 합칠 필요 없이 바로 결과를 출력하도록 하였다.
+		}
+		else if(aver >= 80)
+		{
+			print(averStr + ' B');
+		}
+		else if(aver >= 70)
+		{
+			print(averStr + ' C');
+		}
+		else if(aver >= 60)
+		{
+			print(averStr + ' D');
+		}
+		else
+		{
+			print(averStr + ' F');
+		}
+	}
+배운점 : switch문의 정확한 정의, map, forEach, split 메서드들을 복습하였으며 ceil(올림), floor(버림), round(반올림), toStringAsFixed()함수에대해 알게되었다.  
+
+
