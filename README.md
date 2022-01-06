@@ -219,7 +219,7 @@ int check = arr.reduce((total, element) => total + element); 파라미터안의 
 	}
 배운점 : switch문의 정확한 정의, map, forEach, split 메서드들을 복습하였으며 ceil(올림), floor(버림), round(반올림), toStringAsFixed()함수에대해 알게되었다.  
 
-## feedback에 대한 개선 ## 시험성적과 평균  (1/ 6)
+## feedback에 대한 개선 ## 시험성적과 평균  
 
 	int count = 0;
 		arrInt.forEach((value){
@@ -271,7 +271,7 @@ int check = arr.reduce((total, element) => total + element); 파라미터안의 
 	
 	import 'dart:io';
 
-## feedback에 대한 개선 ## 
+## feedback에 대한 개선 ## 네 
 	void main() {
 		String line = stdin.readLineSync(); // 공백으로 값을 입력받기 때문에 String으로 입력받는다.
 		List<String> arrLine = line.split(' ');  // 각각의 값들을 따로 사용해야 하기때문에 List에 값을 분리해 넣어준다.
@@ -314,7 +314,7 @@ int check = arr.reduce((total, element) => total + element); 파라미터안의 
 		print(count);
 	}
 
-## feedback에 대한 개선 ## 특정문자 개수  (1/ 6)
+## feedback에 대한 개선 ## 특정문자 개수
 	import 'dart:io';
 	void main() {
 		String line = stdin.readLineSync();  // 임의의 문장(50자 이내) 입력
@@ -351,7 +351,7 @@ int check = arr.reduce((total, element) => total + element); 파라미터안의 
 		}
 		print(arrInt.join(' ') + ' ');  // arrInt에 들어있는 값들을 join(' ') 함수를 이용해 공백을 기준으로 String 값으로 합쳐준 후 출력한다.
 	}
-## feedback에 대한 개선 ##  3의배수 (1/ 6)
+## feedback에 대한 개선 ##  3의배수
 	import 'dart:io';
 	void main() {
 		String line = stdin.readLineSync();
@@ -423,7 +423,7 @@ for문을 사용하지 않고 map을 사용하여 새로운 리스트를 만들�
 if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forEach도 써보고, typedef도 처음으로 써본 문제이다. 여러가지 방법으로 풀어보고 싶어 다양하게 풀어봤던것 같다. 
 만약 값을 입력받아 계산하는 문제였다면 typedef가 꽤나 유용했을 것 같다. 
 
-# 구름 ide - 모양찍기 (1/ 6)
+# 구름 ide - 모양찍기
 
 	import 'dart:io';
 	void main() {
@@ -438,7 +438,7 @@ if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forE
 		});
 	}
 
-# 구름 ide - Substring (1/ 6)
+# 구름 ide - Substring
 
 	import 'dart:io';
 	void main() {
@@ -450,7 +450,7 @@ if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forE
 		print(line.substring(intNum[0] - 1).substring(0, intNum[1]));	// String타입에 적용하는 .substring()메서드를 활용한 값 도출
 	}
 
-# 구름 ide - 가위바위보 ( 1/6)
+# 구름 ide - 가위바위보
 
 	import 'dart:io';
 	import 'dart:math';
@@ -495,7 +495,7 @@ if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forE
 		print(winner);
 	}
 
-# 구름 ide - Hello Goorm ! (1 / 6)
+# 구름 ide - Hello Goorm !
 
 	import 'dart:io';
 	void main() {
@@ -507,7 +507,7 @@ if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forE
 		arr.forEach((val) => print('Hello Goorm !'));
 	}
 
-# 구름 ide - 공백 없애기 (1/ 6)
+# 구름 ide - 공백 없애기
 
 	import 'dart:io';
 	void main() {
@@ -518,7 +518,7 @@ if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forE
 		print(result);
 	}
 
-# 구름 ide - 삼각형의 넓이 (1/ 6)
+# 구름 ide - 삼각형의 넓이
 
 	import 'dart:io';
 	void main() {
@@ -528,4 +528,34 @@ if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forE
 
 		double result = arrDouble.reduce((total, element) => total * element * 0.5);
 		print(result.toStringAsFixed(1));
+	}
+
+# 구름 ide - Bubble Sort 
+
+	import 'dart:io';
+	import 'dart:math';
+
+	void main(){
+		String line = stdin.readLineSync();
+		int num = int.parse(line);  // 배열의 크기를 정해주는 num값을 받는다.
+
+		String ns = stdin.readLineSync();
+		List<String> arrNs = ns.split(' ');
+		List<int> intNs = arrNs.map(int.parse).toList();  // 배열에 들어갈 갑들을 입력받는다.
+
+		int m;  // 임시로 값을 가지고 있어줄 변수를 설정하였음
+
+		for(int i = 0; i < num; i++)  // 반복문으로 배열의 앞자리에 올 인덱스를 나타내기 위해 설정하였음
+		{
+			for(int j = i+1; j < num; j++)  // 배열의 뒷자리에 올 인덱스를 나타내기 위해 설정하였음
+			{
+				if(intNs[i] > intNs[j])  // 배열의 앞자리와 인접한 뒷 자리를 비교함
+				{
+					m = intNs[i];  // 위에서 설정한 임시 변수에 앞자리 값을 넣어놓은뒤 
+					intNs[i] = intNs[j];  // 뒷자리 값을 앞자리에 넣어주고 
+					intNs[j] = m;  // 다시 받아놨던 변수의 값을 가져와 뒷자리 값에 넣어준다. 이걸 반복하여줌! 
+				}
+			}
+		}
+		print(intNs.join(' ') + ' ');
 	}
