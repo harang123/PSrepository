@@ -154,3 +154,36 @@
 	}
 
 열심히 생각해서 풀었다. 아무리 생각해도 맞는거 같은데 통과하지 못한 테스트 케이스가 있다고 해서, 내일 아침에 물어보려한다. 자기전에 좀 더 생각해보다가 잘것이다(업데이트가 안될수있음)
+
+	import 'dart:io';
+	void main() {
+		String line = stdin.readLineSync();
+		int num = int.parse(line); // 몇번의 테스트 케이스를 진행할지 수를 입력받는다.
+
+		List<String> arrLine = new List(num);
+		List<String> result = new List(num);
+		int i = 0;
+
+		arrLine.forEach((val){
+			String test = stdin.readLineSync();  // String값을 입력받는 입력메소드
+			List<String> arrTest = test.split(' ');  // 입력받은 메소드를 split()메소드를 써서 String 리스트로 값을 넣어줌
+			List<int> intTest = arrTest.map(int.parse).toList();  // String 리스트를 map 메소드를 써서 int자료형 리스트로 바꿔줌
+
+			result[i] = 'NO';  // result 리스트의 기본값을 NO로 설정하고 만약 조건에 부합하면 YES값을 넣도록 설정하였다.
+			int z;
+
+			if(intTest[2] >= 1 && intTest[2] <= 2000000000 && intTest[0].abs() <= 1000000000 && intTest[1].abs() <= 1000000000) 
+			// 조건에 따라 입력한 값인 X, Y좌표 값은 10억 이하인 정수, N은 1이상 20억 이하의 자연수로 조건을 달아주었다. 
+			{
+				z = intTest[2] - (intTest[0].abs() + intTest[1].abs());  
+				// intTest[0].abs() + intTest[1].abs()의 값은 무조건 N의 값보다 작을 수 밖에 없는데 N에서 x, y좌표의 절대값을 더한 값을 뺀 값을 변수로 받는다. 
+				if(intTest[0].abs() + intTest[1].abs() <= intTest[2] && z % 2 == 0){  
+		// 앞의 조건은 당연하고 뒤의 조건인 N에서 x,y좌표의 절대값을 뺀 값이 2로 나누어 지면 그 좌표는 어디던 N번째에 도착을 할 수 있다는 뜻이므로 조건으로 사용할 수 있다.
+					result[i] = 'YES';
+				}
+			}
+			i++;
+		});
+		result.forEach((val) => print(val));
+	}
+뭐가 빠졌는지 계속 생각해보다가 원칙적인 규칙을 찾다보니 알게되었다. 문제를 자세히 읽고 원하는 결론을 유도리있게 생각하는 방법을 더욱 키워야 겠다.. 
