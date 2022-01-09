@@ -786,3 +786,51 @@ if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forE
 	}
 다양한 math 라이브러리의 메서드를 사용해 볼 수 있는 문제였다. pow(int x, 지수) 제곱을 나타내주는 pow메서드와, sqrt(int x) x의 제곱근을 나타내는 sqrt 메서드, 소수점 이하를 반올림해주는 round 메서드, index값을 찾아주는 indexOf(값) 메서드, 리스트의 최소값을 찾아주는 .reduce(min) 메서드 등 여러가지를 사용해보고 익힐 수 있었다. 
 
+# 프로그래머스 - 로또의 최고 순위와 최저 순위
+
+// 프로그래머스 - 로또의 최고 순위와 최저 순위
+
+	import 'dart:io';
+
+	void main() {
+		List<String> sequence = [0, 1];  // 2번 반복하여 2개의 리스트를 생성하기 위해 크기 2의 리스트를 설정하였다.
+		List<int> lottos = [];  
+		List<int> win_nums = [];
+		List<int> result = new List(2);  // 0이 맞다고 가정하였을 경우와 틀렸다고 가정하였을 경우의 순위를 받아주기 위한 result 리스트 설정
+
+		sequence.forEach((val){  // 반복문을 설정하여 2개의 리스트를 받아온다.
+			var line = stdin.readLineSync();	
+			List<String> arrLine = line.split(' ');
+			if(val == 0){
+				lottos = arrLine.map(int.parse).toList();  // 내가 산 로또의 번호들을 입력받을 List값 설정
+			} else{
+				win_nums = arrLine.map(int.parse).toList();  // 당첨 번호들을 저장 할 List값 설정
+			}
+		});
+
+		int wrongCount = 6;  // 0으로 입력한 숫자가 다 틀렸다고 가정하였을때의 등수
+		int correctCount = 6;  // 0으로 입력한 숫자가 다 맞았다고 가정하였을때의 등수
+
+		for(int i = 0; i < 6; i++){
+			lottos.forEach((val){
+				if(val == win_nums[i]){
+					wrongCount--;  // 로또 번호를 맞출 경우 count--를 통해 6등 -> 5등 이렇게 순위를 변동시켜준다.
+					correctCount--; // 로또 번호를 맞출 경우 count--를 통해 6등 -> 5등 이렇게 순위를 변동시켜준다.
+				} 
+				if(i == 0 && val == 0){
+					correctCount--;  // 0일 경우 로또번호와 맞았다고 가정한 등수에서 순위를 변동시켜 준다.
+				}
+			});
+			if(correctCount >= 5){  // 1개 번호가 일치하거나, 모든 번호가 일치 하지 않을 경우는 등수 6등으로 고정해야함으로 조건을 설정하여준다.
+				correctCount = 5;
+			}
+			if(wrongCount >= 5){  // 1개 번호가 일치하거나, 모든 번호가 일치 하지 않을 경우는 등수 6등으로 고정해야함으로 조건을 설정하여준다.
+				wrongCount = 5;
+			}
+			result[0] = correctCount + 1;  // 1개 맞추면 5등이 아닌 2개맞출때부터 5등이기 때문에 +1로 등수를 맞춰준다.
+			result[1] = wrongCount + 1;
+		}
+		print(result);
+	}
+
+https://programmers.co.kr/learn/courses/30/lessons/77484?language=java 문제 출처이다.
