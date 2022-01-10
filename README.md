@@ -786,3 +786,74 @@ if, else if를 쓰면 어려운 문제는 아니였다. 그래서 일부러 forE
 	}
 다양한 math 라이브러리의 메서드를 사용해 볼 수 있는 문제였다. pow(int x, 지수) 제곱을 나타내주는 pow메서드와, sqrt(int x) x의 제곱근을 나타내는 sqrt 메서드, 소수점 이하를 반올림해주는 round 메서드, index값을 찾아주는 indexOf(값) 메서드, 리스트의 최소값을 찾아주는 .reduce(min) 메서드 등 여러가지를 사용해보고 익힐 수 있었다. 
 
+****
+# **구름 ide 2단계**
+## 구름 ide - 약수의 합
+
+	import 'dart:io';
+
+	void main() {
+		var line = stdin.readLineSync();
+		int num = int.parse(line);  // 약수를 구할 자연수 n을 입력받는다.
+		List<int> arrLine = [];  // 약수들을 모아줄 리스트를 생성한다.
+
+		for(int i = 1; i <= num; i++){  // 1부터 n까지 돌며 n의 약수를 찾는다.
+			if(num % i == 0){
+				arrLine.add(i);  // 찾은 약수를 arrLine 리스트의 값으로 넣어준다.
+			}
+		}
+		int total = arrLine.reduce((total, element) => total + element);  // reduce 메서드를 이용해 총합을 계산한다.
+		print(total);	
+	}
+
+# 구름 ide - 소수 판별
+
+	import 'dart:io';
+	void main() {
+		var line = stdin.readLineSync();
+		int num = int.parse(line);  // 소수인지 확인하고 싶은 값을 입력받는다.
+		String bool = 'True';  // 기본 값을 True로 설정해 준다. 
+
+		for(int i = 1; i < num; i++){  // 소수인지 확인하기 위한 반복문을 설정한다.
+			if(num % i == 0 && i != 1){  // 입력받은 숫자의 1인 아닌 약수를 찾아서 약수가 존재하면 소수가 아니므로 False 값을 넣어준다.
+				bool = 'False';
+			}
+		}
+		print(bool);
+	}
+
+# 구름 ide - 문자열 뒤집기
+
+	import 'dart:io';
+	void main() {
+		var line = stdin.readLineSync();  // 문자열 입력받기
+		List<String> arrLine = line.split('');  // split 메서드로 문자열 리스트 생성하기
+
+		print(arrLine.reversed.join(''));  // reversed 메서드사용해서 리스트 거꾸로 뒤집은 후 join 메서드로 String으로 변환시켜주기
+	}
+
+# 구름 ide - 완전수
+
+	import 'dart:io';
+	void main() {
+		var line = stdin.readLineSync();
+		List<String> arrLine = line.split(' ');
+		List<int> arrIntLine = arrLine.map(int.parse).toList();  // 입력받은 값들을 정수로 나눠 리스트에 넣어줌 
+
+		int total = 0;  // 약수들의 합을 구할 변수 설정
+		List<int> result = [];  // 완전수인 수들을 모으기 위한 리스트 생성
+
+		if(arrIntLine[0] < arrIntLine[1] && arrIntLine[0] <= 10000 && arrIntLine[1] <= 10000){  // 입력받은 값들로 초기 입력 조건을 설정하여준다.
+			for(int i = arrIntLine[0]; i <= arrIntLine[1]; i++){  // 범위의 시작값과 끝값을 설정하여 반복문을 돌려줌
+				for(int j = 1; j < i; j++){  // i의 범위 중에서 반복문을 돌려 i의 약수들을 찾아준다.
+					if(i % j == 0) total += j;  // 그 약수들의 합을 구해준다.
+				}
+				if(total == i) result.add(i);  // 바로 위의 j를 이용한 반복문인 끝난 후 total == i이 인지 비교하여 결과값을 받는 result 리스트에 값을 담아준다.
+				total = 0;  // 위에서 다시 반복문으로 다른값을 찾도록 약수들의 합을 구할 변수인 total을 0으로 초기화해준다.
+			}
+		}
+		print(result.join(' ') + ' ');  // 출력 조건에 맞도록 설정해준다.
+	}
+	
+	
+	
